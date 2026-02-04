@@ -4,7 +4,6 @@ import { Badge } from '../ui/Badge'
 import {
   Layout,
   Gauge,
-  Accessibility,
   Users,
   Puzzle,
   GraduationCap,
