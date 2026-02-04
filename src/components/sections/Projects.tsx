@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import type { Project } from '../../types/data'
 import { Badge } from '../ui/Badge'
@@ -20,19 +20,7 @@ type ProjectsProps = {
 }
 
 export const Projects = ({ projects }: ProjectsProps) => {
-  const [activeFilter, setActiveFilter] = useState('All')
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
-
-  const filters = useMemo(() => {
-    const unique = new Set<string>()
-    projects.forEach((project) => project.tech.forEach((tech) => unique.add(tech)))
-    return ['All', ...Array.from(unique)]
-  }, [projects])
-
-  const filteredProjects = useMemo(() => {
-    if (activeFilter === 'All') return projects
-    return projects.filter((project) => project.tech.includes(activeFilter))
-  }, [activeFilter, projects])
 
   return (
     <section id="projects" className="py-20 bg-white dark:bg-slate-950">
@@ -53,7 +41,7 @@ export const Projects = ({ projects }: ProjectsProps) => {
           </div>
 
           <div className="flex flex-col">
-            {filteredProjects.map((project, index) => (
+            {projects.map((project, index) => (
               <motion.div
                 key={project.title}
                 initial={{ opacity: 0, y: 20 }}

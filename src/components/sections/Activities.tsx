@@ -13,7 +13,6 @@ import {
 import { BentoCard, BentoGrid } from '../ui/BentoGrid'
 import type { Activity } from '../../types/data'
 import { useState } from 'react'
-import { Button } from '../common/Button'
 
 type ActivitiesProps = {
   activities: Activity[]
@@ -109,7 +108,7 @@ export const Activities = ({ activities }: ActivitiesProps) => {
                   </div>
                 }
                 Icon={getIcon(activity.title)}
-                // description={activity.description}
+                description={activity.description}
                 href="#"
                 cta="View Gallery"
                 onClick={() => handleOpen(activity)}

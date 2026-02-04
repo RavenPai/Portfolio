@@ -1,6 +1,3 @@
-
-import { User, Code, Cpu, Globe } from 'lucide-react'
-
 export const heroContent = {
   name: 'Pai Min Thway',
   title: 'Junior Software Developer',

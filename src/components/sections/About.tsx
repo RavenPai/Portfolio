@@ -10,8 +10,8 @@ import {
   GraduationCap,
   Award,
 } from 'lucide-react'
-import { FaReact, FaNodeJs, FaAws, FaPython, FaDocker } from 'react-icons/fa'
-import { SiTypescript, SiGraphql, SiNextdotjs, SiTailwindcss } from 'react-icons/si'
+import { FaReact, FaNodeJs, FaPython, FaDocker } from 'react-icons/fa'
+import { SiNextdotjs } from 'react-icons/si'
 import {
   BarChart,
   Bar,
@@ -143,7 +143,6 @@ export default function AboutMe() {
                 ].map((tech) => (
                   <Badge
                     key={tech.name}
-                    variant="secondary"
                     className="flex items-center gap-2 rounded-lg px-4 py-2 text-base font-medium transition hover:scale-105 dark:bg-slate-800 dark:text-white"
                   >
                     <tech.icon className={`text-lg ${tech.color}`} />
@@ -267,7 +266,7 @@ export default function AboutMe() {
                             radius={[4, 4, 0, 0]}
                             animationDuration={1500}
                           >
-                            {gpaData.map((entry, index) => (
+                            {gpaData.map((_, index) => (
                               <Cell
                                 key={`cell-${index}`}
                                 fill="url(#colorGpa)"
