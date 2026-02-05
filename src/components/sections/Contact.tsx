@@ -176,8 +176,11 @@ export const Contact = ({ socialLinks }: ContactProps) => {
               animate={{ rotate: -360 }}
               transition={{ duration: orbitDuration - 4, repeat: Infinity, ease: 'linear' }}
             />
-            <div className="absolute bottom-24 flex w-full flex-col items-center gap-4">
+            <div className="absolute bottom-24 flex w-full flex-col items-center gap-2">
               <p className="text-sm font-semibold text-slate-600 dark:text-slate-300">Connect</p>
+              <a href="tel:+959778332553" className="text-xs text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200 transition-colors">
+                +95 9 778 332 553
+              </a>
             </div>
             <Dock
               items={dockItems}
