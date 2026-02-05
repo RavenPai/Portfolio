@@ -22,7 +22,7 @@ export const Contact = ({ socialLinks }: ContactProps) => {
     register,
     handleSubmit,
     reset,
-    formState: { errors, isSubmitting, isSubmitSuccessful },
+    formState: { errors, isSubmitting },
   } = useForm<ContactFormValues>()
   const [isSuccess, setIsSuccess] = useState(false)
 

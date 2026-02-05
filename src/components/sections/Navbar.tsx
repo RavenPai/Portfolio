@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useState } from 'react'
 import clsx from 'clsx'
 import { navItems } from '../../constants/navigation'
 import { ThemeSwitcher } from '../common/ThemeSwitcher'
