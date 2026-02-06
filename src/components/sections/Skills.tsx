@@ -47,7 +47,7 @@ export const Skills = ({ skills }: SkillsProps) => {
                   glareSize={300}
                   transitionDuration={400}
                   playOnce={false}
-                  className="transition-colors hover:bg-slate-50 dark:hover:bg-slate-800/30"
+                  className="transition-colors hover:bg-slate-30 dark:hover:bg-slate-800/30"
                 >
                   <div className="flex items-center gap-6 p-6 md:p-8">
                     <div className="flex h-16 w-16 shrink-0 items-center justify-center">
