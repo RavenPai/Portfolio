@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { Card, CardContent } from '../ui/card'
 import { Badge } from '../ui/Badge'
 import { TextAnimate } from '../ui/text-animate'
+import { useTheme } from '../../contexts/ThemeContext'
 import {
   Layout,
   Gauge,
@@ -10,8 +11,8 @@ import {
   GraduationCap,
   Award,
 } from 'lucide-react'
-import { FaReact, FaNodeJs, FaPython, FaDocker } from 'react-icons/fa'
-import { SiNextdotjs } from 'react-icons/si'
+import { FaReact, FaNodeJs, FaPython, FaLaravel } from 'react-icons/fa'
+import { SiRobotframework } from 'react-icons/si'
 import {
   BarChart,
   Bar,
@@ -35,10 +36,14 @@ const overallCgpa =
   gpaData.reduce((sum, item) => sum + item.gpa, 0) / gpaData.length
 
 export default function AboutMe() {
+  const { theme } = useTheme()
+  const isDark = theme === 'dark'
+  const axisColor = isDark ? '#94a3b8' : '#334155'
+
   return (
     <section
       id="about"
-      className="py-20 bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white transition-colors duration-300"
+      className="py-20 bg-transparent text-slate-900 dark:text-white transition-colors duration-300"
     >
       <div className="mx-auto max-w-6xl px-6">
         <motion.div
@@ -83,13 +88,13 @@ export default function AboutMe() {
             {/* Grid 1: Bio & Focus Areas */}
             <div className="grid gap-8 md:grid-cols-2">
               {/* Bio */}
-              <Card className="border-none bg-white/50 shadow-sm backdrop-blur-sm dark:bg-slate-900/50">
+              <Card className="border-none bg-white/20 shadow-sm backdrop-blur-sm dark:bg-slate-900/20">
                 <CardContent className="p-6 md:p-8">
                   <TextAnimate
                     as="p"
                     animation="slideUp"
                     by="word"
-                    className="text-lg leading-8 text-slate-600 dark:text-slate-300 text-justify"
+                    className="text-lg leading-8 text-slate-800 dark:text-slate-300 text-justify"
                   >
                     I am a Junior Software Developer and CSE Undergraduate at MIIT with over two years of experience in Full-Stack Web Development and AI Integration. I love building software that makes life easier and more connected. With experience ranging from large-scale web platforms to research-funded innovations, I enjoy the challenge of turning complex ideas into simple, user-friendly tools. I’m an enthusiastic learner and a creative problem-solver, always focused on writing clean code that makes a real difference in people's lives.
                   </TextAnimate>
@@ -130,7 +135,7 @@ export default function AboutMe() {
                       initial={{ opacity: 0, x: -20 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       transition={{ delay: index * 0.1 }}
-                      className="flex items-start gap-3 text-slate-600 dark:text-slate-300"
+                      className="flex items-start gap-3 text-slate-800 dark:text-slate-300"
                     >
                       <item.icon className="mt-1 h-5 w-5 shrink-0 text-blue-500" />
                       <span>{item.text}</span>
@@ -153,14 +158,14 @@ export default function AboutMe() {
               <div className="flex flex-wrap gap-4">
                 {[
                   { name: 'React', icon: FaReact, color: 'text-cyan-400' },
-                  { name: 'Laravel', icon: SiNextdotjs, color: 'text-black dark:text-white' },
+                  { name: 'Laravel', icon: FaLaravel, color: 'text-black dark:text-white' },
                   { name: 'Python', icon: FaPython, color: 'text-blue-500' },
                   { name: 'Node.js', icon: FaNodeJs, color: 'text-green-500' },
-                  { name: 'AI', icon: FaDocker, color: 'text-blue-600' },
+                  { name: 'AI', icon: SiRobotframework, color: 'text-blue-600' },
                 ].map((tech) => (
                   <Badge
                     key={tech.name}
-                    className="flex items-center gap-2 rounded-lg px-4 py-2 text-base font-medium transition hover:scale-105 dark:bg-slate-800 dark:text-white"
+                    className="flex items-center gap-2 rounded-lg px-4 py-2 text-base font-medium text-slate-800 transition hover:scale-105 dark:bg-slate-800 dark:text-white"
                   >
                     <tech.icon className={`text-lg ${tech.color}`} />
                     {tech.name}
@@ -178,7 +183,7 @@ export default function AboutMe() {
                     <GraduationCap className="h-6 w-6 text-blue-500" />
                     <TextAnimate as="h3" animation="slideUp" by="word">Education</TextAnimate>
                   </div>
-                  <Card className="border-none bg-white/50 shadow-sm backdrop-blur-sm dark:bg-slate-900/50">
+                  <Card className="border-none bg-white/20 shadow-sm backdrop-blur-sm dark:bg-slate-900/20">
                     <CardContent className="p-6">
                       <TextAnimate
                         as="h4"
@@ -192,7 +197,7 @@ export default function AboutMe() {
                         as="p"
                         animation="slideUp"
                         by="word"
-                        className="text-blue-500"
+                        className="text-blue-700 dark:text-blue-400"
                       >
                         Computer Science and Engineering (CSE)
                       </TextAnimate>
@@ -200,7 +205,7 @@ export default function AboutMe() {
                         as="p"
                         animation="slideUp"
                         by="word"
-                        className="mt-2 text-slate-600 dark:text-slate-400 text-justify"
+                        className="mt-2 text-slate-700 dark:text-slate-400 text-justify"
                       >
                         Myanmar Institute of Information Technology
                       </TextAnimate>
@@ -208,7 +213,7 @@ export default function AboutMe() {
                         as="p"
                         animation="slideUp"
                         by="word"
-                        className="text-sm text-slate-500 dark:text-slate-500 text-justify"
+                        className="text-sm text-slate-600 dark:text-slate-500 text-justify"
                       >
                         (Currently attending)
                       </TextAnimate>
@@ -222,7 +227,7 @@ export default function AboutMe() {
                     <Award className="h-6 w-6 text-blue-500" />
                     <TextAnimate as="h3" animation="slideUp" by="word">Matriculation Exam</TextAnimate>
                   </div>
-                  <Card className="border-none bg-white/50 shadow-sm backdrop-blur-sm dark:bg-slate-900/50">
+                  <Card className="border-none bg-white/20 shadow-sm backdrop-blur-sm dark:bg-slate-900/20">
                     <CardContent className="p-6">
                       <TextAnimate
                         as="p"
@@ -236,7 +241,7 @@ export default function AboutMe() {
                         as="p"
                         animation="slideUp"
                         by="word"
-                        className="text-slate-600 dark:text-slate-400 text-justify"
+                        className="text-slate-700 dark:text-slate-400 text-justify"
                       >
                         Total Mark: 506
                       </TextAnimate>
@@ -250,7 +255,7 @@ export default function AboutMe() {
                 <h3 className="text-2xl font-semibold text-slate-900 dark:text-white">
                   Academic Performance
                 </h3>
-                <Card className="border-none bg-white/50 shadow-sm backdrop-blur-sm dark:bg-slate-900/50">
+                <Card className="border-none bg-white/20 shadow-sm backdrop-blur-sm dark:bg-slate-900/20">
                   <CardContent className="p-6">
                     <div className="h-[300px] w-full">
                       <ResponsiveContainer width="100%" height="100%">
@@ -280,13 +285,15 @@ export default function AboutMe() {
                           </defs>
                           <XAxis
                             dataKey="short"
-                            stroke="#94a3b8"
+                            stroke={axisColor}
+                            tick={{ fill: axisColor, fontSize: 12 }}
                             fontSize={12}
                             tickLine={false}
                             axisLine={false}
                           />
                           <YAxis
-                            stroke="#94a3b8"
+                            stroke={axisColor}
+                            tick={{ fill: axisColor, fontSize: 12 }}
                             fontSize={12}
                             tickLine={false}
                             axisLine={false}
@@ -323,7 +330,7 @@ export default function AboutMe() {
                         </BarChart>
                       </ResponsiveContainer>
                     </div>
-                    <p className="mt-4 text-center text-sm font-semibold text-slate-700 dark:text-slate-200">
+                    <p className="mt-4 text-center text-sm font-semibold text-slate-800 dark:text-slate-200">
                       Overall CGPA: {overallCgpa.toFixed(2)}
                     </p>
                   </CardContent>

@@ -66,7 +66,7 @@ export const Achievements = ({ achievements }: AchievementsProps) => {
 
                   <div className="flex min-w-0 flex-1 flex-col justify-center gap-1 px-5 py-4 sm:px-6 sm:py-5">
                     <div className="flex items-start justify-between gap-4">
-                      <h3 className="truncate text-lg font-semibold text-white sm:text-xl">
+                      <h3 className="truncate text-lg font-semibold text-slate-900 dark:text-white sm:text-xl">
                         {achievement.title}
                       </h3>
                       <span className="shrink-0 rounded-full bg-slate-800 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-slate-100">
@@ -74,11 +74,11 @@ export const Achievements = ({ achievements }: AchievementsProps) => {
                       </span>
                     </div>
 
-                    <p className="text-sm font-medium text-slate-200">
+                    <p className="text-sm font-medium text-slate-900 dark:text-slate-200">
                       {achievement.role}
                     </p>
 
-                    <p className="mt-1 line-clamp-2 text-sm leading-relaxed text-slate-300 text-justify">
+                    <p className="mt-1 line-clamp-2 text-sm leading-relaxed text-slate-800 dark:text-slate-300 text-justify">
                       {achievement.description}
                     </p>
                   </div>

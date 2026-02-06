@@ -77,7 +77,7 @@ export const Activities = ({ activities }: ActivitiesProps) => {
   }
 
   return (
-    <section id="activities" className="py-20 bg-slate-50 dark:bg-slate-950">
+    <section id="activities" className="py-20 bg-transparent">
       <div className="mx-auto max-w-6xl px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -112,7 +112,7 @@ export const Activities = ({ activities }: ActivitiesProps) => {
                 name={activity.title}
                 className={getClass(index)}
                 background={
-                  <div className="absolute inset-0 opacity-20 transition-opacity group-hover:opacity-40">
+                  <div className="absolute inset-0 opacity-30 transition-opacity group-hover:opacity-80">
                     <img
                       src={activity.images[0]}
                       alt={activity.title}

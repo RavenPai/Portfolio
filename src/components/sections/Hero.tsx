@@ -8,9 +8,12 @@ type HeroProps = {
   name: string
   title: string
   bio: string
+  titleGradientColors?: [string, string, string]
 }
 
-export const Hero = ({ name, title, bio }: HeroProps) => {
+const DEFAULT_GRADIENT: [string, string, string] = ['#22d3ee', '#8b5cf6', '#f43f5e']
+
+export const Hero = ({ name, title, bio, titleGradientColors = DEFAULT_GRADIENT }: HeroProps) => {
   const [angle, setAngle] = useState(0)
   const intervalRef = useRef<number | null>(null)
 
@@ -54,14 +57,14 @@ export const Hero = ({ name, title, bio }: HeroProps) => {
             as="p"
             animation="slideUp"
             by="word"
-            className="text-xs font-semibold uppercase tracking-[0.4em] text-slate-500 dark:text-slate-400"
+            className="text-xs font-bold uppercase tracking-[0.4em] text-black dark:font-semibold dark:text-slate-400"
           >
             {name}
           </TextAnimate>
-          <h1 className="mt-4 text-4xl font-semibold tracking-tight text-slate-900 dark:text-white sm:text-5xl">
+          <h1 className="mt-4 text-4xl font-bold tracking-tight text-slate-900 dark:font-semibold dark:text-white sm:text-5xl">
             <HighlightText
               className="bg-gradient-to-r from-aurora via-violet to-rose"
-              style={{ backgroundImage: `linear-gradient(${angle}deg, #22d3ee, #8b5cf6, #f43f5e)` }}
+              style={{ backgroundImage: `linear-gradient(${angle}deg, ${titleGradientColors[0]}, ${titleGradientColors[1]}, ${titleGradientColors[2]})` }}
             >
               <TextAnimate as="span" animation="slideUp" by="word">
                 {title}
@@ -72,7 +75,7 @@ export const Hero = ({ name, title, bio }: HeroProps) => {
             as="p"
             animation="slideUp"
             by="word"
-            className="mt-5 text-lg text-slate-600 dark:text-slate-300 text-justify"
+            className="mt-5 text-lg font-medium text-black dark:font-normal dark:text-slate-300 text-justify"
           >
             {bio}
           </TextAnimate>

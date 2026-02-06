@@ -1,3 +1,4 @@
+import { AnimatedBackground } from '../components/common/AnimatedBackground'
 import { Hero } from '../components/sections/Hero'
 import { Navbar } from '../components/sections/Navbar'
 import AboutMe from '../components/sections/About'
@@ -17,18 +18,21 @@ const Home = () => {
   const achievements = activities.filter(a => a.category !== 'Event')
 
   return (
-    <div className="bg-mist text-slate-900 dark:bg-slate-950 dark:text-slate-100">
-      <Navbar />
-      <main className="pt-10">
-        <Hero {...heroContent} />
-        <AboutMe />
-        <Skills skills={skills} />
-        <Projects projects={projects} />
-        <Activities activities={activities} />
-        <Achievements achievements={achievements} />
-        <Contact socialLinks={socialLinks} />
-      </main>
-      <Footer />
+    <div className="relative min-h-screen bg-page-light text-slate-900 dark:bg-page-dark dark:text-slate-100">
+      <AnimatedBackground />
+      <div className="relative z-10">
+        <Navbar />
+        <main className="pt-10">
+          <Hero {...heroContent} />
+          <AboutMe />
+          <Skills skills={skills} />
+          <Projects projects={projects} />
+          <Activities activities={activities} />
+          <Achievements achievements={achievements} />
+          <Contact socialLinks={socialLinks} />
+        </main>
+        <Footer />
+      </div>
     </div>
   )
 }

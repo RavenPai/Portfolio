@@ -108,8 +108,7 @@ export const Contact = ({ socialLinks }: ContactProps) => {
               by="word"
               className="mt-4 text-sm text-slate-600 dark:text-slate-300"
             >
-              Share a project idea, collaboration, or just say hello. The form connects through EmailJS for quick
-              delivery.
+              Share a project idea, collaboration, or just say hello.
             </TextAnimate>
             <form onSubmit={handleSubmit(onSubmit)} className="mt-8 space-y-4">
               <div>

@@ -8,7 +8,7 @@ const App = () => {
     <ThemeProvider>
       <Suspense
         fallback={
-          <div className="min-h-screen bg-mist text-slate-500 dark:bg-slate-950 dark:text-slate-300 flex items-center justify-center">
+          <div className="min-h-screen bg-page-light text-slate-500 dark:bg-page-dark dark:text-slate-300 flex items-center justify-center">
             Loading portfolio...
           </div>
         }

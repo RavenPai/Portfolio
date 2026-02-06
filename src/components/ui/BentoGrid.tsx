@@ -43,15 +43,31 @@ const BentoCard = ({
   cta,
   onClick,
 }: BentoCardProps) => {
+  const isClickable = typeof onClick === "function";
+
   return (
     <div
       key={name}
+      role={isClickable ? "button" : undefined}
+      tabIndex={isClickable ? 0 : undefined}
+      onClick={isClickable ? onClick : undefined}
+      onKeyDown={
+        isClickable
+          ? (e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              onClick?.();
+            }
+          }
+          : undefined
+      }
       className={cn(
         "group relative col-span-3 flex flex-col justify-between overflow-hidden rounded-xl",
         // light styles
         "bg-white [box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)]",
         // dark styles
         "transform-gpu dark:bg-black dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset]",
+        isClickable && "cursor-pointer",
         className,
       )}
     >
@@ -69,9 +85,15 @@ const BentoCard = ({
           "pointer-events-none absolute bottom-0 flex w-full translate-y-10 transform-gpu flex-row items-center p-4 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100",
         )}
       >
-        <Button variant="ghost" asChild size="sm" className="pointer-events-auto" onClick={onClick}>
+        <Button
+          variant="ghost"
+          asChild
+          size="sm"
+          className="pointer-events-auto"
+          onClick={onClick ? (e: React.MouseEvent) => { e.stopPropagation(); onClick(); } : undefined}
+        >
           {onClick ? (
-            <button className="flex items-center">
+            <button type="button" className="flex items-center">
               {cta}
               <ArrowRightIcon className="ml-2 h-4 w-4" />
             </button>

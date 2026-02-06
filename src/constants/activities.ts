@@ -2,24 +2,24 @@ import type { Activity } from '../types/data'
 
 export const activities: Activity[] = [
   {
-    title: 'CodeMutant 2024',
-    role: 'Participant',
-    date: '2024',
-    description: 'Participated in the annual coding hackathon MIIT solving complex algorithmic challenges.',
-    images: ['/activity/CodeMutant/1.jpg'],
-    category: 'Event'
-  },
-  {
     title: 'Science Fest 2024',
     role: 'Exhibitor',
     date: '2024',
     description: 'Presented the Lotus Shrine, an innovative Digital Shrine Room project, providing live demonstrations to visitors..',
     images: [
-      '/activity/ScienceFest/1.jpg',
-      '/activity/ScienceFest/2.jpg',
       '/activity/ScienceFest/3.jpg',
-      '/activity/ScienceFest/4.jpg'
+      '/activity/ScienceFest/2.jpg',
+      '/activity/ScienceFest/4.jpg',
+      '/activity/ScienceFest/1.jpg',
     ],
+    category: 'Event'
+  },
+  {
+    title: 'CodeMutant 2024',
+    role: 'Participant',
+    date: '2024',
+    description: 'Participated in the annual coding hackathon MIIT solving complex algorithmic challenges.',
+    images: ['/activity/CodeMutant/1.jpg'],
     category: 'Event'
   },
   {
@@ -32,7 +32,6 @@ export const activities: Activity[] = [
       '/activity/StemFestival/2.jpg',
       '/activity/StemFestival/3.jpg',
       '/activity/StemFestival/4.jpg',
-      '/activity/StemFestival/photo_2026-02-03_22-20-03.jpg'
     ],
     category: 'Event'
   },

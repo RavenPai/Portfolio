@@ -2,11 +2,11 @@ import type { Project } from '../types/data'
 
 export const projects: Project[] = [
   {
-    title: 'The Lotus Shrine',
-    description: 'An innovative web-based application designed to bridge the gap for individuals unable to visit physical pagodas.',
+    title: 'Lotus Shrine',
+    description: 'The Digital Shrine Room. An innovative web-based application designed to bridge the gap for individuals unable to visit physical pagodas.',
     tech: ['React', 'AI Integration', 'Web'],
     demoUrl: '#',
-    repoUrl: '#',
+    repoUrl: 'https://github.com/KhantNyrrThwin/Lotus_Shrine',
     images: [
       '/projects/lotusShrine/1.PNG',
       '/projects/lotusShrine/2.PNG',
@@ -55,10 +55,12 @@ export const projects: Project[] = [
     demoUrl: '#',
     repoUrl: '#',
     images: [
+      '/projects/evDelivery/Mem2.jpg',
       '/projects/evDelivery/EVCar.jpg',
       '/projects/evDelivery/3DModel1.jpg',
       '/projects/evDelivery/3DModel2.jpg',
       '/projects/evDelivery/PrintedParts.jpg',
+      '/projects/evDelivery/Mem1.jpg',
     ],
     details: `
 ### Features
@@ -75,7 +77,7 @@ export const projects: Project[] = [
     description: 'A web-based educational simulator designed to simplify the complexities of microprocessor architecture for beginners.',
     tech: ['React', 'TypeScript', 'Vite'],
     demoUrl: '#',
-    repoUrl: '#',
+    repoUrl: 'https://github.com/KhantNyrrThwin/OpGO-',
     images: [
       '/projects/opGo!!/1.png',
       '/projects/opGo!!/2.png',
@@ -97,7 +99,7 @@ export const projects: Project[] = [
     description: 'A comprehensive educational ecosystem developed to bridge the gap between students, institutions, and career experts in Myanmar.',
     tech: ['React', 'TypeScript', 'PHP', 'MySQL', 'Tailwind CSS'],
     demoUrl: '#',
-    repoUrl: '#',
+    repoUrl: 'https://github.com/KhantNyrrThwin/EduPath-MM',
     images: [
       '/projects/eduPathMM/1.PNG',
       '/projects/eduPathMM/2.PNG',

@@ -45,7 +45,7 @@ export const Navbar = () => {
 
   return (
     <header
-      className="fixed top-0 z-50 w-full px-6 pt-6"
+      className="fixed top-0 z-50 w-full px-6 py-6"
     >
       <div
         className={clsx(
@@ -55,7 +55,12 @@ export const Navbar = () => {
             : 'border-transparent bg-white/30 backdrop-blur',
         )}
       >
-        <a href="#home">
+        <a href="#home" className="flex items-center gap-3">
+          <img
+            src="/Marr.gif"
+            alt="Logo"
+            className="h-10 w-10 object-contain self-center"
+          />
           <ShinyText
             text="Pai Min Thway"
             speed={2}
@@ -67,7 +72,7 @@ export const Navbar = () => {
             yoyo={false}
             pauseOnHover={false}
             disabled={false}
-            className="text-base font-bold tracking-tight"
+            className="text-base leading-none font-bold tracking-tight"
           />
         </a>
         <nav className="hidden items-center gap-6 text-sm text-slate-600 dark:text-slate-300 md:flex">

@@ -16,6 +16,8 @@ export default {
       colors: {
         ink: '#0f172a',
         mist: '#f8fafc',
+        'page-light': '#99C7FB',
+        'page-dark': '#001731',
         aurora: '#22d3ee',
         violet: '#8b5cf6',
         rose: '#f43f5e',
