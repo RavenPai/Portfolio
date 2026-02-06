@@ -88,12 +88,12 @@ export default function AboutMe() {
             {/* Grid 1: Bio & Focus Areas */}
             <div className="grid gap-8 md:grid-cols-2">
               {/* Bio */}
-              <Card className="border-none bg-white/20 shadow-sm backdrop-blur-sm dark:bg-slate-900/20">
+              <Card className="border-none bg-white/80 shadow-sm dark:bg-slate-900/80">
                 <CardContent className="p-6 md:p-8">
                   <TextAnimate
                     as="p"
                     animation="slideUp"
-                    by="word"
+                    by="line"
                     className="text-lg leading-8 text-slate-800 dark:text-slate-300 text-justify"
                   >
                     I am a Junior Software Developer and CSE Undergraduate at MIIT with over two years of experience in Full-Stack Web Development and AI Integration. I love building software that makes life easier and more connected. With experience ranging from large-scale web platforms to research-funded innovations, I enjoy the challenge of turning complex ideas into simple, user-friendly tools. I’m an enthusiastic learner and a creative problem-solver, always focused on writing clean code that makes a real difference in people's lives.
@@ -134,6 +134,7 @@ export default function AboutMe() {
                       key={index}
                       initial={{ opacity: 0, x: -20 }}
                       whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
                       transition={{ delay: index * 0.1 }}
                       className="flex items-start gap-3 text-slate-800 dark:text-slate-300"
                     >
@@ -183,7 +184,7 @@ export default function AboutMe() {
                     <GraduationCap className="h-6 w-6 text-blue-500" />
                     <TextAnimate as="h3" animation="slideUp" by="word">Education</TextAnimate>
                   </div>
-                  <Card className="border-none bg-white/20 shadow-sm backdrop-blur-sm dark:bg-slate-900/20">
+                  <Card className="border-none bg-white/80 shadow-sm dark:bg-slate-900/80">
                     <CardContent className="p-6">
                       <TextAnimate
                         as="h4"
@@ -227,7 +228,7 @@ export default function AboutMe() {
                     <Award className="h-6 w-6 text-blue-500" />
                     <TextAnimate as="h3" animation="slideUp" by="word">Matriculation Exam</TextAnimate>
                   </div>
-                  <Card className="border-none bg-white/20 shadow-sm backdrop-blur-sm dark:bg-slate-900/20">
+                  <Card className="border-none bg-white/80 shadow-sm dark:bg-slate-900/80">
                     <CardContent className="p-6">
                       <TextAnimate
                         as="p"
@@ -255,7 +256,7 @@ export default function AboutMe() {
                 <h3 className="text-2xl font-semibold text-slate-900 dark:text-white">
                   Academic Performance
                 </h3>
-                <Card className="border-none bg-white/20 shadow-sm backdrop-blur-sm dark:bg-slate-900/20">
+                <Card className="border-none bg-white/80 shadow-sm dark:bg-slate-900/80">
                   <CardContent className="p-6">
                     <div className="h-[300px] w-full">
                       <ResponsiveContainer width="100%" height="100%">

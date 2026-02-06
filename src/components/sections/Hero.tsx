@@ -67,9 +67,7 @@ export const Hero = ({ name, title, bio, titleGradientColors = DEFAULT_GRADIENT 
               className="bg-gradient-to-r from-aurora via-violet to-rose"
               style={{ backgroundImage: `linear-gradient(${angle}deg, ${titleGradientColors[0]}, ${titleGradientColors[1]}, ${titleGradientColors[2]})` }}
             >
-              <TextAnimate as="span" animation="slideUp" by="word">
-                {title}
-              </TextAnimate>
+              {title}
             </HighlightText>
           </h1>
           <TextAnimate
