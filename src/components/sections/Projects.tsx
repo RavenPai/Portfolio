@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, memo, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import type { Project } from '../../types/data'
 import { Badge } from '../ui/Badge'
@@ -21,8 +21,16 @@ type ProjectsProps = {
   projects: Project[]
 }
 
-export const Projects = ({ projects }: ProjectsProps) => {
+const ProjectsComponent = ({ projects }: ProjectsProps) => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
+
+  const handleProjectSelect = useCallback((project: Project) => {
+    setSelectedProject(project)
+  }, [])
+
+  const handleProjectClose = useCallback(() => {
+    setSelectedProject(null)
+  }, [])
 
   useEffect(() => {
     const body = document.body
@@ -120,7 +128,7 @@ export const Projects = ({ projects }: ProjectsProps) => {
                   </div>
 
                   <div className="flex flex-wrap gap-4">
-                    <Button onClick={() => setSelectedProject(project)}>
+                    <Button onClick={() => handleProjectSelect(project)}>
                       View Details
                     </Button>
                   </div>
@@ -183,7 +191,7 @@ export const Projects = ({ projects }: ProjectsProps) => {
                         ))}
                       </div>
                       <div className="flex gap-4">
-                        <Button onClick={() => setSelectedProject(project)}>
+                        <Button onClick={() => handleProjectSelect(project)}>
                           View Details
                         </Button>
                       </div>
@@ -203,7 +211,7 @@ export const Projects = ({ projects }: ProjectsProps) => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-50 flex items-center justify-center overflow-hidden bg-slate-900/60 p-4 backdrop-blur-sm"
-            onClick={() => setSelectedProject(null)}
+            onClick={handleProjectClose}
           >
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
@@ -214,7 +222,7 @@ export const Projects = ({ projects }: ProjectsProps) => {
             >
               <div className="absolute right-4 top-4 z-10">
                 <button
-                  onClick={() => setSelectedProject(null)}
+                  onClick={handleProjectClose}
                   className="rounded-full bg-white/80 p-2 text-slate-500 backdrop-blur transition hover:text-slate-900 dark:bg-slate-950/80 dark:text-slate-400 dark:hover:text-white"
                 >
                   <X size={20} />
@@ -286,3 +294,5 @@ export const Projects = ({ projects }: ProjectsProps) => {
     </section>
   )
 }
+
+export const Projects = memo(ProjectsComponent)

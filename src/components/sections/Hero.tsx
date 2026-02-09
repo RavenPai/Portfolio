@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, useCallback, useMemo } from 'react'
 import { motion } from 'framer-motion'
 import { Button } from '../common/Button'
 import { HighlightText } from '../ui/HighlightText'
@@ -16,17 +16,38 @@ const DEFAULT_GRADIENT: [string, string, string] = ['#22d3ee', '#8b5cf6', '#f43f
 
 export const Hero = ({ name, title, bio, titleGradientColors = DEFAULT_GRADIENT }: HeroProps) => {
   const [angle, setAngle] = useState(0)
-  const intervalRef = useRef<number | null>(null)
+  const rafRef = useRef<number | null>(null)
+  const lastUpdateRef = useRef<number>(0)
 
   useEffect(() => {
-    intervalRef.current = window.setInterval(() => {
-      setAngle((prev) => (prev + 1) % 360)
-    }, 50)
-    return () => {
-      if (intervalRef.current) {
-        window.clearInterval(intervalRef.current)
+    const UPDATE_INTERVAL = 50 // ms
+
+    const animate = (timestamp: number) => {
+      if (timestamp - lastUpdateRef.current >= UPDATE_INTERVAL) {
+        setAngle((prev) => (prev + 1) % 360)
+        lastUpdateRef.current = timestamp
       }
+      rafRef.current = requestAnimationFrame(animate)
     }
+
+    rafRef.current = requestAnimationFrame(animate)
+    return () => {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current)
+    }
+  }, [])
+
+
+  // Memoize gradient style
+  const gradientStyle = useMemo(() => ({
+    backgroundImage: `linear-gradient(${angle}deg, ${titleGradientColors[0]}, ${titleGradientColors[1]}, ${titleGradientColors[2]})`
+  }), [angle, titleGradientColors])
+
+  const scrollToProjects = useCallback(() => {
+    document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' })
+  }, [])
+
+  const scrollToContact = useCallback(() => {
+    document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })
   }, [])
 
   return (
@@ -65,7 +86,7 @@ export const Hero = ({ name, title, bio, titleGradientColors = DEFAULT_GRADIENT 
           <h1 className="mt-4 text-4xl font-bold tracking-tight text-slate-900 dark:font-semibold dark:text-white sm:text-5xl">
             <HighlightText
               className="bg-gradient-to-r from-aurora via-violet to-rose"
-              style={{ backgroundImage: `linear-gradient(${angle}deg, ${titleGradientColors[0]}, ${titleGradientColors[1]}, ${titleGradientColors[2]})` }}
+              style={gradientStyle}
             >
               {title}
             </HighlightText>
@@ -79,13 +100,13 @@ export const Hero = ({ name, title, bio, titleGradientColors = DEFAULT_GRADIENT 
             {bio}
           </TextAnimate>
           <div className="mt-8 flex flex-wrap gap-4">
-            <Button onClick={() => document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' })}>
+            <Button onClick={scrollToProjects}>
               View Projects
             </Button>
             <Button
               variant="outline"
               size="sm"
-              onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={scrollToContact}
             >
               Contact Me
             </Button>

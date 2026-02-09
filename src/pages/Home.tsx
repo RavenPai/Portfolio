@@ -1,3 +1,4 @@
+import { useMemo, memo } from 'react'
 import { AnimatedBackground } from '../components/common/AnimatedBackground'
 import { Hero } from '../components/sections/Hero'
 import { Navbar } from '../components/sections/Navbar'
@@ -14,11 +15,11 @@ import { projects } from '../constants/projects'
 import { activities } from '../constants/activities'
 import { socialLinks } from '../constants/socials'
 
-const Home = () => {
-  const achievements = activities.filter(a => a.category !== 'Event')
+const HomeComponent = () => {
+  const achievements = useMemo(() => activities.filter(a => a.category !== 'Event'), [])
 
   return (
-    <div className="relative min-h-screen bg-page-light text-slate-900 dark:bg-page-dark dark:text-slate-100">
+    <div className="relative min-h-screen bg-page-light text-slate-900 dark:bg-page-dark dark:text-slate-100" style={{ contain: 'layout' }}>
       <AnimatedBackground />
       <div className="relative z-10">
         <Navbar />
@@ -37,4 +38,5 @@ const Home = () => {
   )
 }
 
+const Home = memo(HomeComponent)
 export default Home

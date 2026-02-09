@@ -1,25 +1,32 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, memo, useRef } from 'react'
 import clsx from 'clsx'
 import { navItems } from '../../constants/navigation'
 import { ThemeSwitcher } from '../common/ThemeSwitcher'
 import { useTheme } from '../../contexts/ThemeContext'
 import ShinyText from '../ui/ShinyText'
 
-export const Navbar = () => {
+const NavbarComponent = () => {
   const { theme, toggleTheme } = useTheme()
   const [scrolled, setScrolled] = useState(false)
   const [activeSection, setActiveSection] = useState('')
+  const scrollTimeoutRef = useRef<number | null>(null)
 
-  // Handle scroll effect
+  // Handle scroll effect with debouncing
   useEffect(() => {
     const handleScroll = () => {
-      const currentScrollY = window.scrollY
-      // Glass effect trigger
-      setScrolled(currentScrollY > 12)
+      if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current)
+      scrollTimeoutRef.current = window.setTimeout(() => {
+        const currentScrollY = window.scrollY
+        // Glass effect trigger
+        setScrolled(currentScrollY > 12)
+      }, 10)
     }
 
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current)
+    }
   }, [])
 
   // Active section highlighting
@@ -62,7 +69,7 @@ export const Navbar = () => {
             className="h-10 w-10 object-contain self-center"
           />
           <ShinyText
-            text="Pai Min Thway"
+            text="Pai"
             speed={2}
             delay={0}
             color={theme === 'dark' ? '#b5b5b5' : '#1e293b'}
@@ -129,3 +136,5 @@ const NavLink = ({ href, label, isActive }: { href: string; label: string; isAct
     </a>
   )
 }
+
+export const Navbar = memo(NavbarComponent)

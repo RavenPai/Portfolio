@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import { motion } from 'framer-motion'
 import type { Skill } from '../../types/data'
 import { TextAnimate } from '../ui/text-animate'
@@ -7,7 +8,7 @@ type SkillsProps = {
   skills: Skill[]
 }
 
-export const Skills = ({ skills }: SkillsProps) => {
+const SkillsComponent = ({ skills }: SkillsProps) => {
   return (
     <section id="skills" className="py-20">
       <div className="mx-auto max-w-4xl px-6">
@@ -89,3 +90,5 @@ export const Skills = ({ skills }: SkillsProps) => {
     </section>
   )
 }
+
+export const Skills = memo(SkillsComponent)

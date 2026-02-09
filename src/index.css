@@ -67,6 +67,11 @@
   body {
     @apply bg-background text-foreground;
   }
+  
+  /* Optimize font loading */
+  @font-face {
+    font-display: swap;
+  }
 }
 
 html {
@@ -112,4 +117,19 @@ html {
 
 .dark ::-webkit-scrollbar-thumb:hover {
   background-color: rgba(56, 189, 248, 0.6);
+}
+
+/* Performance optimizations */
+img {
+  content-visibility: auto;
+}
+
+section {
+  contain: layout style;
+}
+
+/* Hint browser about animations */
+.motion-div,
+[class*="motion"] {
+  will-change: transform, opacity;
 }

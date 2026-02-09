@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { useState } from 'react'
+import { useState, memo } from 'react'
 import type { Activity } from '../../types/data'
 import { TextAnimate } from '../ui/text-animate'
 import { MotionCarousel } from '@/components/animate-ui/components/community/motion-carousel'
@@ -9,7 +9,7 @@ type AchievementsProps = {
   achievements: Activity[]
 }
 
-export const Achievements = ({ achievements }: AchievementsProps) => {
+const AchievementsComponent = ({ achievements }: AchievementsProps) => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
 
   return (
@@ -91,3 +91,5 @@ export const Achievements = ({ achievements }: AchievementsProps) => {
     </section>
   )
 }
+
+export const Achievements = memo(AchievementsComponent)

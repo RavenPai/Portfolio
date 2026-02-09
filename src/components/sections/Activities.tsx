@@ -1,3 +1,4 @@
+import { memo, useMemo, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
   Code,
@@ -13,7 +14,7 @@ import {
 import { BentoCard, BentoGrid } from '../ui/BentoGrid'
 import type { Activity } from '../../types/data'
 import { TextAnimate } from '../ui/text-animate'
-import { useState } from 'react'
+
 
 type ActivitiesProps = {
   activities: Activity[]
@@ -45,9 +46,9 @@ const getClass = (index: number) => {
   }
 }
 
-export const Activities = ({ activities }: ActivitiesProps) => {
+const ActivitiesComponent = ({ activities }: ActivitiesProps) => {
   // Filter only Event category
-  const eventActivities = activities.filter(a => a.category === 'Event')
+  const eventActivities = useMemo(() => activities.filter(a => a.category === 'Event'), [activities])
   const [selectedActivity, setSelectedActivity] = useState<Activity | null>(null)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
 
@@ -208,3 +209,5 @@ export const Activities = ({ activities }: ActivitiesProps) => {
     </section>
   )
 }
+
+export const Activities = memo(ActivitiesComponent)

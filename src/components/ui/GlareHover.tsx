@@ -1,6 +1,7 @@
-import { useRef, useState, useLayoutEffect } from 'react'
+import { useRef, useState, useLayoutEffect, memo } from 'react'
 import { motion } from 'framer-motion'
 import type { ReactNode } from 'react'
+import { useTheme } from '../../contexts/ThemeContext'
 
 type GlareHoverProps = {
   children: ReactNode
@@ -17,7 +18,7 @@ type GlareHoverProps = {
   blur?: number
 }
 
-export default function GlareHover({
+const GlareHoverComponent = ({
   children,
   glareColor = '#ffffff',
   glareOpacity = 0.3,
@@ -30,12 +31,13 @@ export default function GlareHover({
   lightGlareOpacity = 0.6,
   blendMode = 'soft-light',
   blur = 3,
-}: GlareHoverProps) {
+}: GlareHoverProps) => {
   const wrapperRef = useRef<HTMLDivElement>(null)
   const [width, setWidth] = useState(0)
   const [hovered, setHovered] = useState(false)
   const [played, setPlayed] = useState(false)
-  const [isDark, setIsDark] = useState(false)
+  const { theme } = useTheme()
+  const isDark = theme === 'dark'
 
   useLayoutEffect(() => {
     const el = wrapperRef.current
@@ -43,12 +45,6 @@ export default function GlareHover({
     setWidth(el.offsetWidth)
     const ro = new ResizeObserver(() => setWidth(el.offsetWidth))
     ro.observe(el)
-    // detect dark mode via Tailwind 'dark' class on <html>
-    const root = document.documentElement
-    const update = () => setIsDark(root.classList.contains('dark'))
-    update()
-    const mo = new MutationObserver(update)
-    mo.observe(root, { attributes: true, attributeFilter: ['class'] })
     return () => ro.disconnect()
   }, [])
 
@@ -97,3 +93,5 @@ export default function GlareHover({
     </div>
   )
 }
+
+export default memo(GlareHoverComponent)
