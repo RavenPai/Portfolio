@@ -52,7 +52,7 @@ export const Hero = ({ name, title, bio, titleGradientColors = DEFAULT_GRADIENT 
 
   return (
     <section id="home" className="relative overflow-hidden pb-20 pt-36">
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,_rgba(148,163,184,0.24),_transparent_55%)] dark:bg-[radial-gradient(circle_at_top,_rgba(56,189,248,0.16),_transparent_55%)]" />
+      {/* Removed conflicting background gradient to allow seamless blending */}
       <div className="mx-auto flex max-w-6xl flex-col gap-12 px-6 md:flex-row md:items-center md:justify-between">
         <motion.div
           initial={{ opacity: 0, x: -30 }}
@@ -79,7 +79,7 @@ export const Hero = ({ name, title, bio, titleGradientColors = DEFAULT_GRADIENT 
             as="p"
             animation="slideUp"
             by="word"
-            className="text-xs font-bold uppercase tracking-[0.4em] text-black dark:font-semibold dark:text-slate-400"
+            className="text-lg font-bold uppercase tracking-[0.25em] text-black dark:font-semibold dark:text-slate-400"
           >
             {name}
           </TextAnimate>

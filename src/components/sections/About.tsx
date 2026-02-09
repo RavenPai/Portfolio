@@ -97,7 +97,7 @@ const AboutMeComponent = () => {
                     by="line"
                     className="text-lg leading-8 text-slate-800 dark:text-slate-300 text-justify"
                   >
-                    I am a Junior Software Developer and CSE Undergraduate at MIIT with over two years of experience in Full-Stack Web Development and AI Integration. I love building software that makes life easier and more connected. With experience ranging from large-scale web platforms to research-funded innovations, I enjoy the challenge of turning complex ideas into simple, user-friendly tools. I'm an enthusiastic learner and a creative problem-solver, always focused on writing clean code that makes a real difference in people's lives.
+                    I am a Junior Web Developer and CSE Undergraduate at MIIT with over two years of experience in Full-Stack Web Development and AI Integration. I love building software that makes life easier and more connected. With experience ranging from large-scale web platforms to research-funded innovations, I enjoy the challenge of turning complex ideas into simple, user-friendly tools. I'm an enthusiastic learner and a creative problem-solver, always focused on writing clean code that makes a real difference in people's lives.
                   </TextAnimate>
                 </CardContent>
               </Card>
