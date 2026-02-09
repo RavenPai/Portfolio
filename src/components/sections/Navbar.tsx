@@ -149,14 +149,14 @@ const NavbarComponent = () => {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className="fixed right-0 top-0 z-50 h-full w-[75%] max-w-sm bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl shadow-2xl md:hidden border-l border-white/20 dark:border-slate-700/30"
+              className="fixed right-0 top-0 z-50 h-full w-[75%] max-w-sm bg-white/95 dark:bg-slate-900/95 backdrop-blur-lg shadow-2xl md:hidden"
             >
               <div className="flex flex-col h-full">
                 {/* Menu Header */}
                 <div className="flex items-center justify-between p-6 border-b border-slate-200 dark:border-slate-800">
                   <div className="flex items-center gap-3">
                     <img
-                      src="/Marr.gif"
+                      src="/profile.svg"
                       alt="Logo"
                       className="h-8 w-8 object-contain"
                     />
